@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.ts",
   "scripts": {
-    "exec": "ts-node src/index.ts",
+    "exec": "NODE_TLS_REJECT_UNAUTHORIZED=0 ts-node src/index.ts",
     "start": "docker-compose up",
     "stop": "docker-compose down"
   },
