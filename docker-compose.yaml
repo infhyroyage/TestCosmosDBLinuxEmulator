@@ -1,0 +1,23 @@
+version: "3"
+
+# https://docs.microsoft.com/ja-jp/azure/cosmos-db/linux-emulator?tabs=sql-api%2Cssl-netstd21#run-the-linux-emulator-on-linux-os
+services:
+  cosmosdb:
+    image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:latest
+    container_name: cosmosdb
+    tty: true
+    ports:
+      - 8081:8081
+      - 10251:10251
+      - 10252:10252
+      - 10253:10253
+      - 10254:10254
+      - 10255:10255
+    environment:
+      - AZURE_COSMOS_EMULATOR_PARTITION_COUNT=3
+      - AZURE_COSMOS_EMULATOR_ENABLE_DATA_PERSISTENCE=true
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 3g
